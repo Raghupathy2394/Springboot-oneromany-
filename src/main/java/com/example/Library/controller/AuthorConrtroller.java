@@ -1,6 +1,7 @@
 package com.example.Library.controller;
 
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,12 @@ public class AuthorConrtroller {
 	public Author createAuthor(@RequestBody Author author) {
 		return authorserviceImp.create(author);
 	}
+	
+	@PostMapping("/postall")
+	public List<Author> createAuthorall(@RequestBody List<Author> author) {
+		return authorserviceImp.createall(author);
+	}
+	
 	@GetMapping("/get/{id}")
 	public Optional<Author> get(@PathVariable int id){
 	return authorserviceImp.get(id);
@@ -35,7 +42,8 @@ public class AuthorConrtroller {
   @PutMapping("/put")
 public Author update(@RequestBody Author author) {
 	  return authorserviceImp.update(author);
-  }
+  } 
+  
   @DeleteMapping("/delete/{id}")
   public String delete(@PathVariable int id) {
 	 return authorserviceImp.delete(id);
